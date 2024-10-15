@@ -1337,7 +1337,7 @@ def load_pipeline() -> StableDiffusionXLPipeline:
     config.enable_cuda_graph = True
 
     pipeline = compile(pipeline, config)
-    for _ in range(2):
+    for _ in range(3):
         pipeline(prompt="", num_inference_steps=10)
 
     return pipeline
