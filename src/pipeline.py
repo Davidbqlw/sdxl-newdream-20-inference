@@ -1,8 +1,6 @@
 import torch
 from PIL.Image import Image
 from diffusers import AutoencoderTiny
-from sfast.compilers.diffusion_pipeline_compiler import (compile,
-                                                         CompilationConfig)
 from pipelines.models import TextToImageRequest
 from torch import Generator
 
@@ -1314,33 +1312,21 @@ class StableDiffusionXLPipeline(
 
         return StableDiffusionXLPipelineOutput(images=image)
 
+from onediffx import compile_pipe
 
-def load_pipeline() -> StableDiffusionXLPipeline:
-    pipeline = StableDiffusionXLPipeline.from_pretrained(
-        "./models/newdream-sdxl-20",
-        torch_dtype=torch.float16,
-        local_files_only=True,
-    ).to("cuda")
-    pipeline.vae = AutoencoderTiny.from_pretrained("madebyollin/taesdxl", torch_dtype=torch.float16).to('cuda')
-    config = CompilationConfig.Default()
-    # xformers and Triton are suggested for achieving best performance.
-    try:
-        import xformers
-        config.enable_xformers = True
-    except ImportError:
-        print('xformers not installed, skip')
-    try:
-        import triton
-        config.enable_triton = True
-    except ImportError:
-        print('Triton not installed, skip')
-    config.enable_cuda_graph = True
-
-    pipeline = compile(pipeline, config)
+def load_pipeline(pipeline=None) -> StableDiffusionXLPipeline:
+    if not pipeline:
+        pipeline = StableDiffusionXLPipeline.from_pretrained(
+            "./models/newdream-sdxl-20",
+            torch_dtype=torch.float16,
+            local_files_only=True,
+        ).to("cuda")
+    pipeline = compile_pipe(pipeline)
     for _ in range(3):
-        pipeline(prompt="", num_inference_steps=10)
+        pipeline(prompt="photo of a dog", num_inference_steps=20)
 
     return pipeline
+
 
 
 def infer(request: TextToImageRequest, pipeline: StableDiffusionXLPipeline) -> Image:
