@@ -1322,7 +1322,7 @@ def load_pipeline(pipeline=None) -> StableDiffusionXLPipeline:
         ).to("cuda")
     pipeline = compile_pipe(pipeline)
     for _ in range(3):
-        pipeline(prompt="photo of a dog", num_inference_steps=20)
+        pipeline(prompt="photo of a dog", num_inference_steps=20, end_cfg=0.7)
 
     return pipeline
 
