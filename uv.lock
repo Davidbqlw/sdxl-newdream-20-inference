@@ -97,7 +97,7 @@ wheels = [
 
 [[package]]
 name = "edge-maxxing-4090-newdream"
-version = "1.0.0"
+version = "6"
 source = { editable = "." }
 dependencies = [
     { name = "accelerate" },
@@ -109,6 +109,7 @@ dependencies = [
     { name = "onediff" },
     { name = "onediffx" },
     { name = "oneflow" },
+    { name = "setuptools" },
     { name = "torch" },
     { name = "torchvision" },
     { name = "transformers" },
@@ -127,6 +128,7 @@ requires-dist = [
     { name = "onediff", specifier = "==1.2.0" },
     { name = "onediffx", specifier = "==1.2.0" },
     { name = "oneflow", url = "https://github.com/siliconflow/oneflow_releases/releases/download/community_cu118/oneflow-0.9.1.dev20240802%2Bcu118-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" },
+    { name = "setuptools", specifier = "==75.2.0" },
     { name = "torch", specifier = "==2.2.2" },
     { name = "torchvision", specifier = "==0.17.2" },
     { name = "transformers", specifier = "==4.41.2" },
@@ -137,7 +139,7 @@ requires-dist = [
 [[package]]
 name = "edge-maxxing-pipelines"
 version = "1.0.0"
-source = { git = "https://github.com/womboai/edge-maxxing?subdirectory=pipelines#40ab921f1f079ec8e5172c7f4b49bbd19581c866" }
+source = { git = "https://github.com/womboai/edge-maxxing?subdirectory=pipelines#5e655562d2587b575f3b2ad50e8c40560d79fd6f" }
 dependencies = [
     { name = "pydantic" },
 ]
@@ -745,6 +747,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/79/9608c4546cdbfe3860dd7aa59e3562c9289113398b1a0bd89b68ce0a9d41/safetensors-0.4.5-pp310-pypy310_pp73-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:6ac85d9a8c1af0e3132371d9f2d134695a06a96993c2e2f0bbe25debb9e3f67a", size = 457316 },
     { url = "https://files.pythonhosted.org/packages/0f/23/b17b483f2857835962ad33e38014efd4911791187e177bc23b057d35bee8/safetensors-0.4.5-pp310-pypy310_pp73-musllinux_1_1_aarch64.whl", hash = "sha256:e3cec4a29eb7fe8da0b1c7988bc3828183080439dd559f720414450de076fcab", size = 620565 },
     { url = "https://files.pythonhosted.org/packages/19/46/5d11dc300feaad285c2f1bd784ff3f689f5e0ab6be49aaf568f3a77019eb/safetensors-0.4.5-pp310-pypy310_pp73-musllinux_1_1_x86_64.whl", hash = "sha256:21742b391b859e67b26c0b2ac37f52c9c0944a879a25ad2f9f9f3cd61e7fda8f", size = 606660 },
+]
+
+[[package]]
+name = "setuptools"
+version = "75.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/07/37/b31be7e4b9f13b59cde9dcaeff112d401d49e0dc5b37ed4a9fc8fb12f409/setuptools-75.2.0.tar.gz", hash = "sha256:753bb6ebf1f465a1912e19ed1d41f403a79173a9acf66a42e7e6aec45c3c16ec", size = 1350308 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/31/2d/90165d51ecd38f9a02c6832198c13a4e48652485e2ccf863ebb942c531b6/setuptools-75.2.0-py3-none-any.whl", hash = "sha256:a7fcb66f68b4d9e8e66b42f9876150a3371558f98fa32222ffaa5bced76406f8", size = 1249825 },
 ]
 
 [[package]]
